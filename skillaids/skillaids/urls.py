@@ -17,17 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from students import views as students_views
-from events import views as events_views
+from events.views import *
 from django.shortcuts import render
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: render(request, 'homepage.html'), name='homepage'),
-    path('signup/', students_views.user_authentication, name='signup'),
-    path('logout/', students_views.user_logout, name='user_logout'),
+    path('login/', students_views.login_view, name='signin'), 
+    path('signup/', students_views.signup_view, name='signup'),  # Corrected to signup_view
+    path('logout/', students_views.logout_view, name='user_logout'),  # Corrected to logout_view
     path('students/', students_views.volunteers_home, name='volunteers_home'),
     path('students/profile/', students_views.profile, name='profile'),
-    path('events/', events_views.events_home, name='events'),  # Updated name
+    path('events/', events_home, name='events'),  # Updated name
     path('volunteer/', students_views.volunteers_home, name='volunteer'),  # Added pattern
 ]
+
 
