@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Card Container */
+.card {
+    width: 400px;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading and Text */
+h2 {
+    margin-bottom: 1rem;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.text-primary {
+    color: #002147;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+/* Input Fields */
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    border-color: #002147;
+ 
+    box-shadow: 0 0 5px  #002147;;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #002147;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.social-buttons .btn {
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 32%;
+}
+
+.social-buttons .google {
+    background-color: #db4437;
+    color: white;
+}
+
+.social-buttons .facebook {
+    background-color: #3b5998;
+    color: white;
+}
+
+.social-buttons .apple {
+    background-color: #333;
+    color: white;
+}
+
+/* Link Styling */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Text */
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
