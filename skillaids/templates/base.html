@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar and Footer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="navbar-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#volunteers">Volunteers</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#signin">Sign In/Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Welcome to Our Platform</h1>
+        <p>Explore our events, volunteer opportunities, and more.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Connect with us:</p>
+        <ul class="footer-links">
+            <li>Email: <a href="mailto:info@ourplatform.com">info@ourplatform.com</a></li>
+            <li>Phone: <a href="tel:+123456789">+123 456 789</a></li>
+            <li>Follow us on <a href="#">Social Media</a></li>
+        </ul>
+    </footer>
+</body>
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #0a2a4a;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-list li {
+    margin: 0 10px;
+}
+
+.navbar-list a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.navbar-list a:hover {
+    color: #77a4d3;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #0a2a4a;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+.footer-links {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.footer-links li {
+    margin: 0.5rem 0;
+}
+
+.footer-links a {
+    color: #77a4d3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styling (Optional) */
+.content {
+    padding: 2rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+</style>
+</html>
