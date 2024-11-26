@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,23 +101,23 @@
     <div class="profile-container">
         <!-- Sidebar -->
         <div class="profile-sidebar">
-            <img src="https://via.placeholder.com/120" alt="User Profile Picture">
-            <h1>John Doe</h1>
-            <h2>Mentor | AI & Leadership</h2>
+            <img src="{% static 'images/profile.jpg' %}" alt="User Profile Picture">
+            <h1>{{ user.name }}</h1>
+            <h2>{{ user.title }}</h2>
             <div class="social-icons">
-                <a href="#"><i class="fa fa-facebook"></i>F</a>
-                <a href="#"><i class="fa fa-twitter"></i>T</a>
-                <a href="#"><i class="fa fa-linkedin"></i>L</a>
-                <a href="#"><i class="fa fa-instagram"></i>I</a>
+                <a href="{{ user.facebook }}"><i class="fa fa-facebook"></i>F</a>
+                <a href="{{ user.twitter }}"><i class="fa fa-twitter"></i>T</a>
+                <a href="{{ user.linkedin }}"><i class="fa fa-linkedin"></i>L</a>
+                <a href="{{ user.instagram }}"><i class="fa fa-instagram"></i>I</a>
             </div>
         </div>
 
         <!-- Content -->
         <div class="profile-content">
             <h2>About</h2>
-            <p><strong>Bio:</strong> Experienced professional in technology and innovation with a passion for mentoring young talent.</p>
-            <p><strong>Expertise:</strong> Artificial Intelligence, Entrepreneurship</p>
-            <p><strong>Interests:</strong> Sustainable Development, Leadership</p>
+            <p><strong>Bio:</strong> {{ user.bio }}</p>
+            <p><strong>Expertise:</strong> {{ user.expertise }}</p>
+            <p><strong>Interests:</strong> {{ user.interests }}</p>
 
             <div class="table-container">
                 <h2>Participation History</h2>
@@ -130,24 +131,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for event in user.events %}
                         <tr>
-                            <td>AI & Machine Learning Workshop</td>
-                            <td>Completed</td>
-                            <td>Jan 5, 2025</td>
-                            <td>5</td>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.status }}</td>
+                            <td>{{ event.date }}</td>
+                            <td>{{ event.credits }}</td>
                         </tr>
-                        <tr>
-                            <td>Sustainability Practices for Startups</td>
-                            <td>Completed</td>
-                            <td>Jun 20, 2025</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>Entrepreneurship Bootcamp</td>
-                            <td>Registered</td>
-                            <td>Dec 15, 2024</td>
-                            <td>-</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
