@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillAid - Empowering Future Entrepreneurs</title>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -158,17 +158,8 @@
             margin-top: 30px;
         }
     </style>
-</head>
-<body>
-    <nav>
-        <a href="#" class="logo">SkillAid</a>
-        <div class="menu">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+
+
 
     <section class="hero">
         <div class="content">
@@ -221,8 +212,4 @@
         <p class="testimonial">"SkillAid has transformed the way I approach mentorship and learning. The opportunities are endless, and the community is incredibly supportive."</p>
     </section>
 
-    <footer>
-        <p>&copy; 2024 SkillAid. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% endblock %}

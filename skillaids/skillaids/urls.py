@@ -16,10 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from students import views
+from students import views as students_views
+from events import views as events_views
+from django.shortcuts import render
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/', views.user_authentication, name='signup'),
-    path('logout/', views.user_logout, name='user_logout'),
+    path('', lambda request: render(request, 'homepage.html'), name='homepage'),
+    path('signup/', students_views.user_authentication, name='signup'),
+    path('logout/', students_views.user_logout, name='user_logout'),
+    path('students/', students_views.volunteers_home, name='volunteers_home'),
+    path('students/profile/', students_views.profile, name='profile'),
+    path('events/', events_views.events_home, name='events'),  # Updated name
+    path('volunteer/', students_views.volunteers_home, name='volunteer'),  # Added pattern
 ]
+
