@@ -20,6 +20,6 @@ from students import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', views.user_authentication, name='user_authentication'),
+    path('signup/', views.user_authentication, name='signup'),
     path('logout/', views.user_logout, name='user_logout'),
 ]
