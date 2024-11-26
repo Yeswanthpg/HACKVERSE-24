@@ -1,76 +1,228 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>SkillAid</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillAid - Empowering Future Entrepreneurs</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
-            font-family: Arial, sans-serif;
+            padding: 0;
+            background-color: #f9f9fb;
+            color: #333;
         }
-        .navbar {
-            background-color: #0a2a4a;
-            padding: 10px 20px;
+
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 50px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .navbar img {
-            height: 40px;
-        }
-        .navbar a {
-            color: white;
+        nav .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0056b3;
             text-decoration: none;
+        }
+        nav .menu a {
             margin: 0 15px;
-            font-size: 14px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
         }
-        .navbar .left-links a {
-            margin-right: 30px;
+        nav .menu a:hover {
+            color: #ff4081;
         }
-        .navbar .right-links a {
-            margin-left: 15px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            border: 1px solid transparent;
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 50px;
+            background-color: #eef3fb;
         }
-        .navbar .right-links a.login {
-            border-color: white;
+        .hero .content {
+            max-width: 50%;
         }
-        .navbar .right-links a.join {
-            background-color: #007bff;
-            border-color: #007bff;
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .hero button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .hero button:hover {
+            background-color: #e0356b;
+        }
+        .hero img {
+            max-width: 40%;
+            border-radius: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin: 30px auto;
+            border-radius: 10px;
+            max-width: 1200px;
+        }
+        .stats .stat {
+            text-align: center;
+        }
+        .stats .stat h3 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .stats .stat p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .features {
+            padding: 60px 50px;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .features .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .features .feature {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .features .feature:hover {
+            transform: translateY(-10px);
+        }
+        .features .feature h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .features .feature p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .testimonials {
+            padding: 60px 50px;
+            background-color: #eef3fb;
+            text-align: center;
+        }
+        .testimonials h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        .testimonials .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="left-links">
-            <img alt="SkillAid Logo" src="skillaids\skillaid-01.png" width="100" />
-            <a href="#">
-                For Individuals
-            </a>
-            <a href="#">
-                For Businesses
-            </a>
-            <a href="#">
-                For Universities
-            </a>
-            <a href="#">
-                For Governments
-            </a>
+    <nav>
+        <a href="#" class="logo">SkillAid</a>
+        <div class="menu">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
         </div>
-        <div class="right-links">
-            <a href="#">
-                Online Degrees
-            </a>
-            <a href="#">
-                Careers
-            </a>
-            <a class="login" href="#">
-                Log In
-            </a>
-            <a class="join" href="signup.html">
-                Join for Free
-            </a>
+    </nav>
+
+    <section class="hero">
+        <div class="content">
+            <h1>Unlock Your Potential</h1>
+            <p>Join a global community of mentors and aspiring entrepreneurs. SkillAid bridges the gap between mentorship, skill-building, and sustainable growth.</p>
+            <button>Get Started</button>
+        </div>
+        <img src="https://via.placeholder.com/600x400" alt="Hero Image">
+    </section>
+
+    <div class="stats">
+        <div class="stat">
+            <h3>10K+</h3>
+            <p>Students Empowered</p>
+        </div>
+        <div class="stat">
+            <h3>500+</h3>
+            <p>Mentors Available</p>
+        </div>
+        <div class="stat">
+            <h3>100+</h3>
+            <p>Global Partnerships</p>
         </div>
     </div>
+
+    <section id="features" class="features">
+        <h2>What We Offer</h2>
+        <div class="grid">
+            <div class="feature">
+                <h3>Personalized Mentorship</h3>
+                <p>Get guidance from industry experts tailored to your goals.</p>
+            </div>
+            <div class="feature">
+                <h3>SkillAid Credits</h3>
+                <p>Earn rewards by participating in events and volunteering.</p>
+            </div>
+            <div class="feature">
+                <h3>Global Dashboard</h3>
+                <p>Track your progress and contributions toward SDG 17.</p>
+            </div>
+            <div class="feature">
+                <h3>CSR Partnerships</h3>
+                <p>Connect with companies to foster impactful collaborations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What People Are Saying</h2>
+        <p class="testimonial">"SkillAid has transformed the way I approach mentorship and learning. The opportunities are endless, and the community is incredibly supportive."</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SkillAid. All rights reserved.</p>
+    </footer>
 </body>
 </html>

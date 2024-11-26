@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .profile-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .profile-sidebar {
+            width: 35%;
+            background: linear-gradient(135deg, #ff4081, #ff4081);
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .profile-sidebar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 15px;
+        }
+        .profile-sidebar h1 {
+            margin: 10px 0 5px;
+            font-size: 22px;
+        }
+        .profile-sidebar h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+        .profile-sidebar .social-icons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .profile-sidebar .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .profile-sidebar .social-icons a:hover {
+            color: #ffcbcb;
+        }
+
+        .profile-content {
+            width: 65%;
+            padding: 20px;
+        }
+        .profile-content h2 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        .profile-content p {
+            margin: 5px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- Sidebar -->
+        <div class="profile-sidebar">
+            <img src="https://via.placeholder.com/120" alt="User Profile Picture">
+            <h1>John Doe</h1>
+            <h2>Mentor | AI & Leadership</h2>
+            <div class="social-icons">
+                <a href="#"><i class="fa fa-facebook"></i>F</a>
+                <a href="#"><i class="fa fa-twitter"></i>T</a>
+                <a href="#"><i class="fa fa-linkedin"></i>L</a>
+                <a href="#"><i class="fa fa-instagram"></i>I</a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="profile-content">
+            <h2>About</h2>
+            <p><strong>Bio:</strong> Experienced professional in technology and innovation with a passion for mentoring young talent.</p>
+            <p><strong>Expertise:</strong> Artificial Intelligence, Entrepreneurship</p>
+            <p><strong>Interests:</strong> Sustainable Development, Leadership</p>
+
+            <div class="table-container">
+                <h2>Participation History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Event Title</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Credits Earned</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI & Machine Learning Workshop</td>
+                            <td>Completed</td>
+                            <td>Jan 5, 2025</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Sustainability Practices for Startups</td>
+                            <td>Completed</td>
+                            <td>Jun 20, 2025</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Entrepreneurship Bootcamp</td>
+                            <td>Registered</td>
+                            <td>Dec 15, 2024</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

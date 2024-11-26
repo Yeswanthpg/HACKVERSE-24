@@ -3,26 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar and Footer</title>
+    <title>SkillAid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">
+                <img src="skillaids/skillaid-01.png" alt="SkillAid Logo" class="logo">
+            </a>
+        </div>
         <ul class="navbar-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#volunteers">Volunteers</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#signin">Sign In/Login</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="volunteer.html">Volunteers</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="signup.html" id="openModal">Sign In/Login</a></li>
         </ul>
     </nav>
 
     <!-- Main Content -->
-    <div class="content">
-        <h1>Welcome to Our Platform</h1>
-        <p>Explore our events, volunteer opportunities, and more.</p>
-    </div>
+    <header class="hero-section">
+        <h1>Welcome to SkillAid</h1>
+        <p>Your one-stop platform for exploring events and volunteer opportunities.</p>
+        <a href="events.html" class="cta-button">Explore Events</a>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>What We Offer</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <img src="images/events.png" alt="Events">
+                <h3>Exciting Events</h3>
+                <p>Discover engaging events that match your interests.</p>
+            </div>
+            <div class="feature">
+                <img src="images/volunteers.png" alt="Volunteers">
+                <h3>Volunteer Opportunities</h3>
+                <p>Make a difference by joining our volunteering programs.</p>
+            </div>
+            <div class="feature">
+                <img src="images/profile.png" alt="Profile">
+                <h3>Personalized Profiles</h3>
+                <p>Track your activities and showcase your contributions.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -32,34 +61,63 @@
             <li>Phone: <a href="tel:+123456789">+123 456 789</a></li>
             <li>Follow us on <a href="#">Social Media</a></li>
         </ul>
+        <p>&copy; 2024 SkillAid. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Dynamic "back to top" button
+        const backToTopButton = document.createElement('button');
+        backToTopButton.textContent = "↑";
+        backToTopButton.classList.add('back-to-top');
+        document.body.appendChild(backToTopButton);
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
 </body>
+
 <style>
-    /* General Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Navbar Styling */
 .navbar {
     background-color: #0a2a4a;
-    padding: 1rem;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-logo .logo {
+    height: 50px;
 }
 
 .navbar-list {
     list-style: none;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .navbar-list li {
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .navbar-list a {
@@ -71,7 +129,83 @@
 }
 
 .navbar-list a:hover {
-    color: #77a4d3;
+    color: #cccc99;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to bottom, #0a2a4a, #0a2a2a);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #cccc99;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #0a2a4a;
+}
+
+/* Features Section */
+.features {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.feature {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.feature img {
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: #555;
 }
 
 /* Footer Styling */
@@ -79,13 +213,12 @@
     background-color: #0a2a4a;
     color: white;
     text-align: center;
-    padding: 1.5rem 0;
-    margin-top: 2rem;
+    padding: 2rem 1rem;
 }
 
 .footer-links {
     list-style: none;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .footer-links li {
@@ -102,12 +235,24 @@
     text-decoration: underline;
 }
 
-/* Main Content Styling (Optional) */
-.content {
-    padding: 2rem;
-    text-align: center;
-    font-family: Arial, sans-serif;
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0a2a4a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.back-to-top:hover {
+    background-color: #333;
+}
 </style>
 </html>

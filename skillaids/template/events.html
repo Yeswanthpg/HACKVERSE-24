@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillAid Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+        }
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            color: #ffc107;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: calc(100% - 250px);
+            margin: auto;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-info span {
+            font-size: 14px;
+            color: #555;
+        }
+        .card-info button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .card-info button:hover {
+            background-color: #0056b3;
+        }
+        .card.hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function filterEvents(category) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                if (category === 'All' || cardCategory === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h3>Filter by Category</h3>
+        <ul>
+            <li><a href="#" onclick="filterEvents('All')">All Events</a></li>
+            <li><a href="#" onclick="filterEvents('Entrepreneurship')">Entrepreneurship</a></li>
+            <li><a href="#" onclick="filterEvents('AI & Machine Learning')">AI & Machine Learning</a></li>
+            <li><a href="#" onclick="filterEvents('Sustainability')">Sustainability</a></li>
+            <li><a href="#" onclick="filterEvents('Leadership')">Leadership</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="card" data-category="Entrepreneurship">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Entrepreneurship Bootcamp</div>
+                <div class="card-description">A 3-day bootcamp to kickstart your entrepreneurial journey. Learn from the best in the industry.</div>
+                <div class="card-info">
+                    <span>Date: Dec 15, 2024</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="AI & Machine Learning">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">AI & Machine Learning Workshop</div>
+                <div class="card-description">Master the fundamentals of AI and ML with hands-on training from experts.</div>
+                <div class="card-info">
+                    <span>Date: Jan 5, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="Sustainability">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Sustainable Development Seminar</div>
+                <div class="card-description">Join us to discuss the latest trends in sustainability and SDG partnerships.</div>
+                <div class="card-info">
+                    <span>Date: Feb 10, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="Leadership">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Leadership Skills Workshop</div>
+                <div class="card-description">Enhance your leadership skills with proven strategies and practical exercises.</div>
+                <div class="card-info">
+                    <span>Date: Mar 20, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="Entrepreneurship">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Design Thinking for Innovators</div>
+                <div class="card-description">Learn how to approach problems creatively with hands-on design thinking exercises.</div>
+                <div class="card-info">
+                    <span>Date: Apr 10, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="AI & Machine Learning">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Digital Marketing Essentials</div>
+                <div class="card-description">Understand the basics of digital marketing and how to grow your online presence effectively.</div>
+                <div class="card-info">
+                    <span>Date: May 15, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-category="Sustainability">
+            <img src="https://via.placeholder.com/300x200" alt="Event Image">
+            <div class="card-content">
+                <div class="card-title">Sustainability Practices for Startups</div>
+                <div class="card-description">Learn practical strategies to make your startup environmentally friendly and sustainable.</div>
+                <div class="card-info">
+                    <span>Date: Jun 20, 2025</span>
+                    <button>Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
