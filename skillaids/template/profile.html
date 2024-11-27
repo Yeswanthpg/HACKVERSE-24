@@ -9,21 +9,21 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: white;
         }
         .profile-container {
             max-width: 1000px;
             margin: 20px auto;
             display: flex;
-            background: white;
+            background: #0a2a4a;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .profile-sidebar {
             width: 35%;
-            background: linear-gradient(135deg, #ff4081, #ff4081);
-            color: white;
+            background: linear-gradient(135deg, #cccc99, #d2b48c);
+            color: #0a2a4a;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -34,7 +34,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid white;
+            border: 3px solid #d2b48c;
             margin-bottom: 15px;
         }
         .profile-sidebar h1 {
@@ -69,11 +69,11 @@
         .profile-content h2 {
             margin-bottom: 15px;
             font-size: 18px;
-            color: #333;
+            color: #d2b48c;
         }
         .profile-content p {
             margin: 5px 0;
-            color: #555;
+            color: #cccc99;
             line-height: 1.6;
         }
         .table-container {
@@ -90,8 +90,8 @@
             border: 1px solid #ddd;
         }
         table th {
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #cccc99;
+            color: #0a2a4a;
         }
     </style>
 </head>
@@ -100,7 +100,7 @@
     <div class="profile-container">
         <!-- Sidebar -->
         <div class="profile-sidebar">
-            <img src="{% static 'images/profile.jpg' %}" alt="User Profile Picture">
+            <img src="{% static 'img\profile.jpg' %}" alt="User Profile Picture">
             <h1>{{ user.name }}</h1>
             <h2>{{ user.title }}</h2>
             <div class="social-icons">

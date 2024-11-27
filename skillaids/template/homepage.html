@@ -3,16 +3,15 @@
 {% load static %}
 
 {% block content %}
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9fb;
             color: #333;
         }
-
         nav {
             background-color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -40,7 +39,6 @@
         nav .menu a:hover {
             color: #ff4081;
         }
-
         .hero {
             display: flex;
             justify-content: space-between;
@@ -77,41 +75,35 @@
             max-width: 40%;
             border-radius: 10px;
         }
-
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            padding: 50px;
-            background-color: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            margin: 30px auto;
-            border-radius: 10px;
-            max-width: 1200px;
-        }
-        .stats .stat {
-            text-align: center;
-        }
-        .stats .stat h3 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        .stats .stat p {
-            font-size: 16px;
-            color: #555;
-        }
-
-        .features {
+        .stats, .features {
             padding: 60px 50px;
-        }
-        .features h2 {
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 40px;
         }
+       /* Stats Section */
+    .stats {
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        margin: 30px auto;
+        border-radius: 10px;
+        padding: 60px 50px;
+        text-align: center;
+    }
+    .stats .stat {
+        display: inline-block;
+        margin: 0 15px;
+        transition: transform 0.3s ease;
+    }
+    .stats .stat:hover {
+        transform: scale(1.1);
+    }
+    .stats h3 {
+        font-size: 32px;
+        color: #0056b3;
+    }
         .features .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 240px;
         }
         .features .feature {
             background: white;
@@ -119,37 +111,45 @@
             border-radius: 10px;
             padding: 20px;
             text-align: center;
-            transition: transform 0.3s ease;
         }
-        .features .feature:hover {
-            transform: translateY(-10px);
+        .pricing-plans {
+            background-color: #ffffff;
+            padding: 60px 50px;
+            text-align: center;
         }
-        .features .feature h3 {
+        .pricing-plans .plan {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+        .pricing-plans .plan h2 {
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .features .feature p {
-            font-size: 16px;
-            color: #555;
+        .pricing-plans .plan .price {
+            font-size: 32px;
+            margin-bottom: 10px;
         }
-
-        .testimonials {
-            padding: 60px 50px;
-            background-color: #eef3fb;
-            text-align: center;
+        .pricing-plans .plan ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 20px 0;
         }
-        .testimonials h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
+        .pricing-plans .plan ul li {
+            margin: 10px 0;
         }
-        .testimonials .testimonial {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            color: #555;
-            line-height: 1.8;
+        .pricing-plans .plan .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-
         footer {
             text-align: center;
             padding: 20px;
@@ -158,9 +158,14 @@
             margin-top: 30px;
         }
     </style>
-
-
-
+</head>
+<body>
+    <nav>
+        <div class="menu">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+    </nav>
     <section class="hero">
         <div class="content">
             <h1>Unlock Your Potential</h1>
@@ -169,7 +174,6 @@
         </div>
         <img src="{% static 'img\skills.jpg' %}" alt="Hero Image">
     </section>
-
     <div class="stats">
         <div class="stat">
             <h3>10K+</h3>
@@ -184,7 +188,6 @@
             <p>Global Partnerships</p>
         </div>
     </div>
-
     <section id="features" class="features">
         <h2>What We Offer</h2>
         <div class="grid">
@@ -200,16 +203,29 @@
                 <h3>Global Dashboard</h3>
                 <p>Track your progress and contributions toward SDG 17.</p>
             </div>
-            <div class="feature">
-                <h3>CSR Partnerships</h3>
-                <p>Connect with companies to foster impactful collaborations.</p>
-            </div>
         </div>
     </section>
+    <section id="pricing" class="pricing-plans">
+        <h2>Pricing Plans</h2>
+        <div class="plan">
+            <h2>Tier 1</h2>
+            <div class="price">399.99 INR/month</div>
+            <p>Event 20</p>
 
-    <section id="testimonials" class="testimonials">
-        <h2>What People Are Saying</h2>
-        <p class="testimonial">"SkillAid has transformed the way I approach mentorship and learning. The opportunities are endless, and the community is incredibly supportive."</p>
+            <button class="button">Choose Tier 1</button>
+        </div>
+        <div class="plan">
+            <h2>Tier 2</h2>
+            <div class="price">459.99 INR/month</div>
+            <p>Event 40</p>
+            <button class="button">Choose Tier 2</button>
+        </div>
+        <div class="plan">
+            <h2>Tier 3</h2>
+            <div class="price">999.99 INR/month</div>
+            <p>Event 80</p>
+            <button class="button">Choose Tier 3</button>
+        </div>
     </section>
 
 {% endblock %}
