@@ -21,7 +21,7 @@
 ## **Technologies Used**
 - **Backend:** Django, Python  
 - **Frontend:** HTML, CSS 
-- **Database:**  SQLite )  
+- **Database:**  SQLite   
 
 ---
 
