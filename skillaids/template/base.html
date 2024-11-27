@@ -6,9 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img\skillaid-01.svg' %}" type="image/x-icon">
     <title>SkillAid</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+    
     <style>
         /* General Reset */
         * {
@@ -21,21 +22,26 @@
             color:#cccc99;
         }
         /* Navbar Styling */
-        .navbar {
-            background-color: #0a2a4a;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .navbar-logo .logo {
-            height: 50px;
-        }
+    .navbar {
+        background-color: #0a2a4a;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        height: 80px; /* Keep the navbar height fixed */
+    }
+    
+    .navbar-logo .logo {
+        margin-top: 20px;
+        height: 150px; /* Adjust logo height */
+        width: auto; /* Keep logo aspect ratio */
+        object-fit: contain; /* Ensure it doesn't stretch or distort */
+        display: block;
+    }
         
         .navbar-list {
             list-style: none;
@@ -187,7 +193,7 @@
     <nav class="navbar">
         <div class="navbar-logo">
             <a href="{% url 'homepage' %}">
-                <img src="{% static 'img\skillaid-01.svg' %}" alt="SkillAid Logo" class="logo">
+                <img src="{% static 'img\skillaid-01.png' %}" alt="SkillAid Logo" class="logo">
             </a>
         </div>
         <ul class="navbar-list">
