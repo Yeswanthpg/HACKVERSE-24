@@ -9,19 +9,30 @@
         padding: 0;
         background-color: #f4f4f9;
         display: flex;
-        flex-direction: row; /* Ensure proper alignment of sidebar and content */
+        flex-direction: column; /* For overall layout structure */
+        height: 100vh;
     }
 
-    /* Sidebar styles */
-    .sidebar {
+    /* Overall wrapper */
+    .page-wrapper {
+        display: flex;
+        flex: 1;
+        flex-direction: row; /* Sidebar and content aligned horizontally */
+        height: 100%;
+    }
+
+    /* Sidebar wrapper */
+    .sidebar-wrapper {
         width: 250px;
         background-color: #007bff;
         color: white;
+        height: 100%;
+    }
+
+    .sidebar {
         padding: 15px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .sidebar h3 {
@@ -50,11 +61,17 @@
         color: #ffc107;
     }
 
-    /* Main content styles */
+    /* Content wrapper */
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
     .main-content {
-        margin-left: 250px; /* Account for sidebar width */
         padding: 20px;
-        width: calc(100% - 250px); /* Prevent overflow */
+        flex: 1;
         box-sizing: border-box;
     }
 
@@ -130,34 +147,43 @@
     }
 </style>
 
-<!-- Sidebar for category filtering -->
-<div class="sidebar">
-    <h3>Filter by Category</h3>
-    <ul>
-        <li><a href="#" onclick="filterEvents('All')">All Events</a></li>
-        <li><a href="#" onclick="filterEvents('Entrepreneurship')">Entrepreneurship</a></li>
-        <li><a href="#" onclick="filterEvents('AI & Machine Learning')">AI & Machine Learning</a></li>
-        <li><a href="#" onclick="filterEvents('Sustainability')">Sustainability</a></li>
-        <li><a href="#" onclick="filterEvents('Leadership')">Leadership</a></li>
-    </ul>   
-</div>
+<div class="page-wrapper">
+    <!-- Sidebar Section -->
+    <div class="sidebar-wrapper">
+        <div class="sidebar">
+            <h3>Filter by Category</h3>
+            <ul>
+                <li><a href="#" onclick="filterEvents('All')">All Events</a></li>
+                <li><a href="#" onclick="filterEvents('Entrepreneurship')">Entrepreneurship</a></li>
+                <li><a href="#" onclick="filterEvents('AI & Machine Learning')">AI & Machine Learning</a></li>
+                <li><a href="#" onclick="filterEvents('Sustainability')">Sustainability</a></li>
+                <li><a href="#" onclick="filterEvents('Leadership')">Leadership</a></li>
+            </ul>
+        </div>
+    </div>
 
-<!-- Main content area -->
-<div class="main-content">
-    <div class="container">
-        {% for event in events %}
-        <div class="card" data-category="{{ event.category }}">
-            <img src="{{ event.image_url }}" alt="Event Image">
-            <div class="card-content">
-                <div class="card-title">{{ event.title }}</div>
-                <div class="card-description">{{ event.description }}</div>
-                <div class="card-info">
-                    <span>Date: {{ event.date }}</span>
-                    <button>Register</button>
+    <!-- Main Content Section -->
+    <div class="content-wrapper">
+        <div class="main-content">
+            <div class="container">
+                {% for event in events %}
+                <div class="card" data-category="{{ event.event_category }}">
+                    {% if event.image_url %}
+                    <img src="{{ event.image_url }}" alt="Event Image">
+                    {% endif %}
+                    <div class="card-content">
+                        <div class="card-title">{{ event.event_title }}</div>
+                        <div class="card-description">{{ event.event_description }}</div>
+                        <div class="card-info">
+                            <span>Date: {{ event.event_date }}</span>
+                            <span>Location: {{ event.location }}</span>
+                            <button>Register</button>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
 </div>
 

@@ -3,122 +3,87 @@ from django.contrib.auth.models import User
 from students.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import UserProfile
+from django.contrib.auth.hashers import make_password
 
 
 
 
-def volunteers_home(request):
-    return render(request, 'volunteer.html')
 
 def profile(request):
     return render(request, 'profile.html')
 
-def login_view(request):
+def userlogin(request):
     if request.method == 'POST':
-        user_id = request.POST['user_id']
+        username = request.POST['username']
         password = request.POST['password']
-        
-        # Try to authenticate using either username or email
-        user = authenticate(request, username=user_id, password=password)
-        
-        if user is not None:
-            login(request, user)
-            #messages.success(request, 'Login successful!')
-            return redirect('homepage')  # Replace with your homepage URL name
-        else:
-            # Check if the user exists but password is wrong
-            try:
-                # Check if user exists by username or email
-                user_exists = User.objects.filter(username=user_id) or User.objects.filter(email=user_id)
+
+        user =  authenticate(request,username=username, password=password)
+       
+        if user is not None and user.is_active:
+
+            if user.is_superuser:
+                login(request, user)
+                return redirect('admin')
+
+            details = userdetails.objects.get(user = user)
+           
+            # if details.user_type == 'Official':
+            #     login(request, user)
+            #     return redirect('official-profile')
+
+            if details.user_type == 'mentee':
+                login(request, user)
+                return redirect('events')
                 
-                if user_exists:
-                    messages.error(request, 'Invalid password. Please try again.')
-                else:
-                    messages.error(request, 'User does not exist. Please sign up.')
-            except:
-                messages.error(request, 'Login failed. Please try again.')
+            elif details and details.user_type == 'mentor':
+                login(request, user)
+                return redirect('volunteer')
             
-            return render(request, 'signup.html')
-    
+        else:
+            msg = "wrong Credentials"
+            return render(request, 'signup.html', {'msg': msg})
     return render(request, 'signup.html')
 
-def signup_view(request):
+
+# def admin_dashboard(request):
+#     # admin_dashboard.html needs to be added
+#     return render(request, 'Admin/admin-dashboard.html')
+
+
+def register(request):
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        full_name = request.POST.get('full_name')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        confirm_password = request.POST.get('confirm_password')
-        role = request.POST.get('role')
+        firstName = request.POST['firstName']
+        lastName = request.POST['lastName']
+        username = request.POST['username']  
+        email = request.POST['email']
+        phone = request.POST['phone']
+        role = request.POST['role']
+        password = request.POST['password1']
         
-        # Validate inputs
-        if not (user_id and full_name and email and password and confirm_password and role):
-            messages.error(request, 'All fields are required.')
-            return render(request, 'signup.html')
+        user = User(
+            username=username,  # Include the username parameter
+            email=email,
+            password=make_password(password),
+            first_name=firstName,
+            last_name=lastName,
+        )
         
-        # Check if user already exists
-        if User.objects.filter(username=user_id).exists() or User.objects.filter(email=email).exists():
-            messages.error(request, 'User with this ID or email already exists.')
-            return render(request, 'signup.html')
-        
-        # Validate password
-        if password != confirm_password:
-            messages.error(request, 'Passwords do not match.')
-            return render(request, 'signup.html')
-        
-        # Create user
-        try:
-            user = User.objects.create_user(
-                username=user_id, 
-                email=email, 
-                password=password,
-                first_name=full_name
-            )
-            user.save()
-            # Create user profile with role-specific details
-            if role == 'mentee':
-                profile_data = {
-                    'age': request.POST.get('age'),
-                    'education': request.POST.get('education'),
-                    'skills': request.POST.get('skills'),
-                    'preferred_days': request.POST.get('preferred_days')
-                }
-            elif role == 'mentor':
-                profile_data = {
-                    'company_affiliation': request.POST.get('company_affiliation'),
-                    'role_at_company': request.POST.get('role_at_company'),
-                    'professional_expertise': request.POST.get('professional_expertise'),
-                    'area_of_interest': request.POST.get('area_of_interest'),
-                    'preferred_communication': request.POST.get('preferred_communication')
-                }
-            else:
-                messages.error(request, 'Invalid role selected.')
-                return render(request, 'signup.html')
-            
-            # Create UserProfile
-            UserProfile.objects.create(
-                user=user,
-                role=role,
-                **profile_data
-            )
-            
-            # Authenticate and login
-            authenticated_user = authenticate(username=user_id, password=password)
-            if authenticated_user:
-                login(request, authenticated_user)
-                messages.success(request, 'Account created successfully!')
-                return redirect('homepage')  # Replace with your homepage URL name
-        
-        except Exception as e:
-            messages.error(request, f'An error occurred: {str(e)}')
-            return render(request, 'signup.html')
-    
+        user.save()
+        print(f"User created: {user.__dict__}")
+
+        user_details = userdetails(user_id=user.id, user_phone=phone, user_type=role)
+        user_details.save()
+        user_model = User.objects.get(username=username)
+        return redirect('userlogin')
+
     return render(request, 'signup.html')
 
 def logout_view(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
-    return redirect('homepage')  # Replace with your homepage URL name
+    return redirect('homepage')  # Replace with your actual homepage URL name
 
-
+def volunteers_list(request):
+    volunteers = Volunteer.objects.all()
+    print(volunteers)
+    return render(request, 'volunteer.html', {'volunteers': volunteers})

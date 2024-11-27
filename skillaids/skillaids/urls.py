@@ -23,13 +23,19 @@ from django.shortcuts import render
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: render(request, 'homepage.html'), name='homepage'),
-    path('login/', students_views.login_view, name='signin'), 
-    path('signup/', students_views.signup_view, name='signup'),  # Corrected to signup_view
-    path('logout/', students_views.logout_view, name='user_logout'),  # Corrected to logout_view
-    path('students/', students_views.volunteers_home, name='volunteers_home'),
+    
+    # Authentication URLs
+    path('login/', students_views.userlogin, name='userlogin'),  # Changed to match view name
+    path('signup/', students_views.register, name='signup'),  # Changed to match view name
+    path('logout/', students_views.logout_view, name='logout'),  # Simplified logout URL
+    
+    # Student/Volunteer URLs
     path('students/profile/', students_views.profile, name='profile'),
-    path('events/', events_home, name='events'),  # Updated name
-    path('volunteer/', students_views.volunteers_home, name='volunteer'),  # Added pattern
+    
+    # Events URL
+    path('events/', events_home, name='events'),
+    path('volunteer/', students_views.volunteers_list, name='volunteers'),
+    path('volunteers/', students_views.volunteers_list, name='volunteers_list'),
 ]
 
 

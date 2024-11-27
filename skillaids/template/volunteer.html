@@ -4,60 +4,168 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="header">
-            <h1>List of Volunteers</h1>
-        </div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .filter-section {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .filter-section h2 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .filter-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        align-items: center;
+    }
+    .filter-form select,
+    .filter-form input {
+        padding: 8px;
+        font-size: 0.9em;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 200px;
+    }
+    .filter-form button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        cursor: pointer;
+    }
+    .filter-form button:hover {
+        background-color: #0056b3;
+    }
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .profile-card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+    .profile-card h3 {
+        margin: 10px 0 5px;
+        font-size: 1.2em;
+    }
+    .profile-card p {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+</style>
 
-        <!-- Filter Section -->
-        <div class="filter-section">
-            <h2>Filter Profiles</h2>
-            <form class="filter-form" id="filter-form">
-                <select name="role" id="role-filter">
-                    <option value="">All Roles</option>
-                    <option value="developer">Developer</option>
-                    <option value="designer">Designer</option>
-                    <option value="manager">Manager</option>
-                </select>
-                <input type="text" id="skills-filter" placeholder="Search by skills">
-                <button type="button" onclick="applyFilters()">Apply Filters</button>
-            </form>
-        </div>
 
-        <!-- Profile Grid -->
-        <div class="profile-grid" id="profile-grid">
-            {% for volunteer in volunteers %}
-            <div class="profile-card" data-role="{{ volunteer.role }}" data-skills="{{ volunteer.skills }}">
-                <img src="{{ volunteer.image_url }}" alt="{{ volunteer.name }}" class="profile-img">
-                <h3>{{ volunteer.name }}</h3>
-                <p>{{ volunteer.position }}</p>
-                <a href="{% url 'profile' volunteer.id %}" class="btn">View Profile</a>
-            </div>
-            {% endfor %}
-        </div>
+<!-- Filter Section -->
+<div class="container">
+    <div class="header">
+        <h1>List of Volunteers</h1>
     </div>
 
-    <script>
-        function applyFilters() {
-            const roleFilter = document.getElementById("role-filter").value.toLowerCase();
-            const skillsFilter = document.getElementById("skills-filter").value.toLowerCase();
-            const profiles = document.querySelectorAll(".profile-card");
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <h2>Filter Profiles</h2>
+        <form class="filter-form" id="filter-form">
+            <select name="role" id="role-filter">
+                <option value="">All Roles</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
+            </select>
+            <input type="text" id="skills-filter" placeholder="Search by skills">
+            <button type="button" onclick="applyFilters()">Apply Filters</button>
+        </form>
+    </div>
 
-            profiles.forEach(profile => {
-                const role = profile.getAttribute("data-role").toLowerCase();
-                const skills = profile.getAttribute("data-skills").toLowerCase();
+   <!-- Profile Grid -->
+<div class="profile-grid" id="profile-grid">
+    {% if volunteers %}
+        {% for volunteer in volunteers %}
+        <div class="profile-card" data-role="{{ volunteer.role|default:'none' }}" data-skills="{{ volunteer.skills }}">
+            <img src="https://via.placeholder.com/100" alt="User {{ forloop.counter }}" class="profile-img">
+            <h3>{{ volunteer.name }}</h3>
+            <p>Email: {{ volunteer.email }}</p>
+            <p>Skills: {{ volunteer.skills }}</p>
+            <p>Experience: {{ volunteer.experience_level }} months</p>
+            <p>Location: {{ volunteer.location }}</p>
+            <a href="#" class="btn">View Profile</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No volunteers found.</p>
+    {% endif %}
+</div>
 
-                // Check if the profile matches the filters
-                if (
-                    (roleFilter === "" || role.includes(roleFilter)) &&
-                    (skillsFilter === "" || skills.includes(skillsFilter))
-                ) {
-                    profile.style.display = "block";
-                } else {
-                    profile.style.display = "none";
-                }
-            });
-        }
-    </script>
 
+<script>
+    function applyFilters() {
+        const roleFilter = document.getElementById("role-filter").value.toLowerCase();
+        const skillsFilter = document.getElementById("skills-filter").value.toLowerCase();
+        const profiles = document.querySelectorAll(".profile-card");
+
+        profiles.forEach(profile => {
+            const role = profile.getAttribute("data-role").toLowerCase();
+            const skills = profile.getAttribute("data-skills").toLowerCase();
+
+            // Check if the profile matches the filters
+            if (
+                (roleFilter === "" || role.includes(roleFilter)) &&
+                (skillsFilter === "" || skills.includes(skillsFilter))
+            ) {
+                profile.style.display = "block";
+            } else {
+                profile.style.display = "none";
+            }
+        });
+    }
+</script>
+
+
+   
 {% endblock %}
