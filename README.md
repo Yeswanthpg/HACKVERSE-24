@@ -20,9 +20,8 @@
 
 ## **Technologies Used**
 - **Backend:** Django, Python  
-- **Frontend:** HTML, CSS, Bootstrap  
-- **Database:** PostgreSQL (or SQLite for development)  
-- **Hosting:** [Specify if deployed, e.g., Heroku, AWS]  
+- **Frontend:** HTML, CSS 
+- **Database:**  SQLite )  
 
 ---
 
